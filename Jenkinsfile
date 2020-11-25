@@ -1,17 +1,18 @@
 pipeline {
         agent any 
-	    stage{'one'}
+		
+	    stage('checkout')
 		{
-		step{echo 'Hello from the other side'}
+		step{echo 'checkout'}
 		}
-		stage ('two')
+		stage ('build_condition')
 		{
-		step{input ('Do you want to proceed?')}
+		step{input ('Do you want to proceed')}
 		}
-		stage ('three')
+		stage ('build')
 		{
-		when{not {branch "master"}}
+		
+		steps{echo 'Building the application'}
 		}
-		steps{echo "Hello"}
-        }
- 
+		
+		}
